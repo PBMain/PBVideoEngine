@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
-  s.name             = 'PBPodUnity'
+  s.name             = 'PBVideoEngine'
   s.version          = '0.0.0.1'
-  s.summary          = 'Photo Butler pod that contains support for playing and saving Unity-based Cinemini and Cinemajor Templates.'
+  s.summary          = 'Photo Butler pod that contains support for playing and saving Cinemini and Cinemajor Templates.'
   
   s.description      = <<-DESC
-  Photo Butler pod that contains support for playing and saving Unity-based Cinemini and Cinemajor Templates. Contains the Unity as a Framework code as well as a wrapper class to make usage as simple as possible.
+  Photo Butler pod that contains support for playing and saving Cinemini and Cinemajor Templates. Contains the Unity as a Framework code as well as a wrapper class to make usage as simple as possible.
                        DESC
 
-  s.homepage         = 'https://github.com/git/PBPodUnity'
+  s.homepage         = 'https://github.com/git/PBVideoEngine'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'git' => 'danspencer@photobutler.com' }
 
@@ -26,4 +26,10 @@ Pod::Spec.new do |s|
   s.vendored_frameworks = 'UnityFramework.framework'
   s.vendored_libraries = 'libs/*.{a}'
 
+  s.xcconfig = {'ENABLE_BITCODE' => 'NO'}
+  #s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 x86_64 i386' }
+  #s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 x86_64 i386' }
+  s.preserve_paths =  'UnityFramework.framework/*'
+  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64' }
+  s.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64' }
 end
